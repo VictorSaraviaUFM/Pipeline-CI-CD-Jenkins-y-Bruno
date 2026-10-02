@@ -1,0 +1,29 @@
+info:
+  name: /reset
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseUrl}}/reset"
+  auth: inherit
+
+runtime:
+  variables:
+    - name: baseUrl
+      value: http://127.0.0.1:8000
+  scripts:
+    - type: tests
+      code: |-
+        test("restablece los tres libros iniciales", function () {
+          expect(res.getStatus()).to.equal(200);
+          expect(res.getBody().status).to.equal("reset");
+          expect(res.getBody().books).to.equal(3);
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

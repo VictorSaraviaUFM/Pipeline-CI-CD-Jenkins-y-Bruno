@@ -1,0 +1,28 @@
+info:
+  name: /reset
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{baseUrl}}/reset"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("restablece los tres libros iniciales", function () {
+          expect(res.getStatus()).to.equal(200);
+          expect(res.getBody().status).to.equal("reset");
+          expect(res.getBody().books).to.equal(3);
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+docs: "Técnica: transición de estados. Valor probado: restablecer el catálogo al estado inicial. Resultado esperado: 200 y tres libros."

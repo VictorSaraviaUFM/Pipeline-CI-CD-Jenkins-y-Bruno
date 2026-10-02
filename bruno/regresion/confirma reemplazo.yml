@@ -1,0 +1,31 @@
+info:
+  name: confirma reemplazo
+  type: http
+  seq: 9
+
+http:
+  method: GET
+  url: "{{baseUrl}}/books/4"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("devuelve el libro reemplazado", function () {
+          const book = res.getBody();
+          expect(res.getStatus()).to.equal(200);
+          expect(book.title).to.equal("Replaced Book");
+          expect(book.author).to.equal("Autora final");
+          expect(book.year).to.equal(2100);
+          expect(book.copies).to.equal(1);
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+docs: "Técnica: transición de estados. Valor probado: consultar después de reemplazar mediante PUT. Resultado esperado: 200 con todos los valores nuevos y `copies=1`."

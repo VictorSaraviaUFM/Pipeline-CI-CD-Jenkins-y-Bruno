@@ -1,0 +1,34 @@
+info:
+  name: actualiza copias
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/books/4"
+  body:
+    type: json
+    data: |-
+      {
+        "copies": 5
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("actualiza las copias y conserva los demás campos", function () {
+          expect(res.getStatus()).to.equal(200);
+          expect(res.getBody().id).to.equal(4);
+          expect(res.getBody().copies).to.equal(5);
+          expect(res.getBody().title).to.equal("Software Testing Basics");
+          expect(res.getBody().author).to.equal("Equipo QA");
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

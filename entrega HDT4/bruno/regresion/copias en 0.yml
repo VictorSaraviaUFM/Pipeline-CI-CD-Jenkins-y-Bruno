@@ -1,0 +1,36 @@
+info:
+  name: copias en 0
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/books/4"
+  body:
+    type: json
+    data: |-
+      {
+        "copies": 0
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("acepta cero copias sin cambiar los otros campos", function () {
+          const book = res.getBody();
+          expect(res.getStatus()).to.equal(200);
+          expect(book.copies).to.equal(0);
+          expect(book.title).to.equal("Boundary Year");
+          expect(book.year).to.equal(1450);
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+docs: "Técnica: valores frontera. Valor probado: `copies=0`, mínimo válido. Resultado esperado: 200; solo cambia `copies`."

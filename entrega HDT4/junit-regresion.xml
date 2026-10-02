@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="/reset" file="reset.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:58.539" hostname="Victors-MacBook-Pro.local" time="0.109">
+    <testcase name="restablece los tres libros iniciales" status="pass" classname="reset" time="0.109"/>
+  </testsuite>
+  <testsuite name="filtrar autor sin mayúsculas" file="filtrar autor sin mayúsculas.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:58.539" hostname="Victors-MacBook-Pro.local" time="0.054">
+    <testcase name="encuentra a Christie Wilson con un filtro en minúsculas" status="pass" classname="filtrar autor sin mayúsculas" time="0.054"/>
+  </testsuite>
+  <testsuite name="libro con año mínimo válido" file="libro con año mínimo válido.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:58.539" hostname="Victors-MacBook-Pro.local" time="0.054">
+    <testcase name="acepta el año mínimo y crea el libro 4" status="pass" classname="libro con año mínimo válido" time="0.054"/>
+  </testsuite>
+  <testsuite name="copias en 0" file="copias en 0.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:58.539" hostname="Victors-MacBook-Pro.local" time="0.052">
+    <testcase name="acepta cero copias sin cambiar los otros campos" status="pass" classname="copias en 0" time="0.052"/>
+  </testsuite>
+  <testsuite name="copias al máximo" file="copias al máximo.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:58.539" hostname="Victors-MacBook-Pro.local" time="0.052">
+    <testcase name="acepta el máximo de copias" status="pass" classname="copias al máximo" time="0.052"/>
+  </testsuite>
+  <testsuite name="rechaza copias arriba del máximo" file="rechaza copias arriba del máximo.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:58.539" hostname="Victors-MacBook-Pro.local" time="0.052">
+    <testcase name="rechaza mil copias" status="pass" classname="rechaza copias arriba del máximo" time="0.052"/>
+  </testsuite>
+  <testsuite name="PATCH inválido" file="PATCH inválido.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:58.539" hostname="Victors-MacBook-Pro.local" time="0.052">
+    <testcase name="conserva 999 copias después del PATCH rechazado" status="pass" classname="PATCH inválido" time="0.052"/>
+  </testsuite>
+  <testsuite name="Reemplazar libro" file="Reemplazar libro.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:58.539" hostname="Victors-MacBook-Pro.local" time="0.051">
+    <testcase name="reemplaza el libro y aplica el valor predeterminado de copies" status="pass" classname="Reemplazar libro" time="0.051"/>
+  </testsuite>
+  <testsuite name="confirma reemplazo" file="confirma reemplazo.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:58.539" hostname="Victors-MacBook-Pro.local" time="0.055">
+    <testcase name="devuelve el libro reemplazado" status="pass" classname="confirma reemplazo" time="0.055"/>
+  </testsuite>
+  <testsuite name="rechaza un año menor al mínimo" file="rechaza un año menor al mínimo.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:58.539" hostname="Victors-MacBook-Pro.local" time="0.052">
+    <testcase name="rechaza un año menor que 1450" status="pass" classname="rechaza un año menor al mínimo" time="0.052"/>
+  </testsuite>
+  <testsuite name="título vacío" file="título vacío.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:58.539" hostname="Victors-MacBook-Pro.local" time="0.051">
+    <testcase name="rechaza un título vacío" status="pass" classname="título vacío" time="0.051"/>
+  </testsuite>
+  <testsuite name="elimina libro" file="elimina libro.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:58.539" hostname="Victors-MacBook-Pro.local" time="0.084">
+    <testcase name="elimina el libro existente" status="pass" classname="elimina libro" time="0.084"/>
+  </testsuite>
+  <testsuite name="consulta libro eliminado" file="consulta libro eliminado.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:58.539" hostname="Victors-MacBook-Pro.local" time="0.051">
+    <testcase name="no encuentra el libro eliminado" status="pass" classname="consulta libro eliminado" time="0.051"/>
+  </testsuite>
+  <testsuite name="HEAD libro eliminado" file="HEAD libro eliminado.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:58.539" hostname="Victors-MacBook-Pro.local" time="0.051">
+    <testcase name="HEAD indica que el libro ya no existe" status="pass" classname="HEAD libro eliminado" time="0.051"/>
+  </testsuite>
+  <testsuite name="métodos permitidos" file="métodos permitidos.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:58.539" hostname="Victors-MacBook-Pro.local" time="0.050">
+    <testcase name="informa los métodos permitidos para books" status="pass" classname="métodos permitidos" time="0.050"/>
+  </testsuite>
+</testsuites>

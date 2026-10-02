@@ -1,0 +1,40 @@
+info:
+  name: Reemplazar libro
+  type: http
+  seq: 8
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/books/4"
+  body:
+    type: json
+    data: |-
+      {
+        "title": "Replaced Book",
+        "author": "Autora final",
+        "year": 2100
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("reemplaza el libro y aplica el valor predeterminado de copies", function () {
+          const book = res.getBody();
+          expect(res.getStatus()).to.equal(200);
+          expect(book.id).to.equal(4);
+          expect(book.title).to.equal("Replaced Book");
+          expect(book.author).to.equal("Autora final");
+          expect(book.year).to.equal(2100);
+          expect(book.copies).to.equal(1);
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+docs: "Técnicas: valores frontera y transición de estados. Valores probados: `year=2100`, máximo válido, y PUT sin `copies`. Resultado esperado: 200; el libro queda reemplazado y `copies` vuelve a su valor predeterminado de 1."

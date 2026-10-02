@@ -1,0 +1,27 @@
+info:
+  name: métodos permitidos
+  type: http
+  seq: 15
+
+http:
+  method: OPTIONS
+  url: "{{baseUrl}}/books"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("informa los métodos permitidos para books", function () {
+          expect(res.getStatus()).to.equal(204);
+          expect(res.getHeader("Allow")).to.equal("GET, POST, OPTIONS");
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+docs: "Técnica: partición de equivalencia. Valor probado: solicitud OPTIONS válida sobre `/books`. Resultado esperado: 204 y header `Allow: GET, POST, OPTIONS`."

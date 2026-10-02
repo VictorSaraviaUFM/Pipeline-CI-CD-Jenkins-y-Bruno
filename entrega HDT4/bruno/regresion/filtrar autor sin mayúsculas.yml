@@ -1,0 +1,35 @@
+info:
+  name: filtrar autor sin mayúsculas
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{baseUrl}}/books?author=wilson"
+  params:
+    - name: author
+      value: wilson
+      type: query
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("encuentra a Christie Wilson con un filtro en minúsculas", function () {
+          const books = res.getBody();
+          expect(res.getStatus()).to.equal(200);
+          expect(books).to.be.an("array");
+          expect(books).to.have.lengthOf(1);
+          expect(books[0].id).to.equal(1);
+          expect(books[0].author).to.equal("Christie Wilson");
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+docs: "Técnica: partición de equivalencia. Valor probado: subcadena válida `wilson` en minúsculas. Resultado esperado: 200 y únicamente el libro de Christie Wilson."

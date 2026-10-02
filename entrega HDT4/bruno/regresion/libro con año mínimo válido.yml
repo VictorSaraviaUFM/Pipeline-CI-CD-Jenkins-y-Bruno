@@ -1,0 +1,40 @@
+info:
+  name: libro con año mínimo válido
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{baseUrl}}/books"
+  body:
+    type: json
+    data: |-
+      {
+        "title": "Boundary Year",
+        "author": "Equipo QA",
+        "year": 1450,
+        "copies": 2
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("acepta el año mínimo y crea el libro 4", function () {
+          const book = res.getBody();
+          expect(res.getStatus()).to.equal(201);
+          expect(book.id).to.equal(4);
+          expect(book.year).to.equal(1450);
+          expect(book.copies).to.equal(2);
+          expect(res.getHeader("Location")).to.equal("/books/4");
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+docs: "Técnica: valores frontera. Valor probado: `year=1450`, mínimo válido. Resultado esperado: 201, libro creado y header `Location: /books/4`."

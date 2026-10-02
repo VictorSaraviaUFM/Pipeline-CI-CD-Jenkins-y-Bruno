@@ -1,0 +1,26 @@
+info:
+  name: consulta libro eliminado
+  type: http
+  seq: 13
+
+http:
+  method: GET
+  url: "{{baseUrl}}/books/4"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("no encuentra el libro eliminado", function () {
+          expect(res.getStatus()).to.equal(404);
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+docs: "Técnica: transición de estados. Valor probado: GET después de DELETE. Resultado esperado: 404."

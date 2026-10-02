@@ -1,0 +1,36 @@
+info:
+  name: título vacío
+  type: http
+  seq: 11
+
+http:
+  method: POST
+  url: "{{baseUrl}}/books"
+  body:
+    type: json
+    data: |-
+      {
+        "title": "",
+        "author": "Equipo QA",
+        "year": 2000,
+        "copies": 1
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("rechaza un título vacío", function () {
+          expect(res.getStatus()).to.equal(422);
+          expect(res.getBody().detail).to.be.an("array");
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+docs: 'Técnica: partición de equivalencia. Valor probado: `title=""`, partición inválida de longitud cero. Resultado esperado: 422; no se crea el libro.'

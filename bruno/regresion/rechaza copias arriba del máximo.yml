@@ -1,0 +1,33 @@
+info:
+  name: rechaza copias arriba del máximo
+  type: http
+  seq: 6
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/books/4"
+  body:
+    type: json
+    data: |-
+      {
+        "copies": 1000
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("rechaza mil copias", function () {
+          expect(res.getStatus()).to.equal(422);
+          expect(res.getBody().detail).to.be.an("array");
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+docs: "Técnica: valores frontera. Valor probado: `copies=1000`, uno por encima del máximo. Resultado esperado: 422."

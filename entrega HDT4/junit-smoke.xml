@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<testsuites>
+  <testsuite name="/reset" file="reset.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:10.923" hostname="Victors-MacBook-Pro.local" time="0.107">
+    <testcase name="restablece los tres libros iniciales" status="pass" classname="reset" time="0.107"/>
+  </testsuite>
+  <testsuite name="/health" file="health.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:10.924" hostname="Victors-MacBook-Pro.local" time="0.053">
+    <testcase name="el servicio responde con tres libros" status="pass" classname="health" time="0.053"/>
+  </testsuite>
+  <testsuite name="/books" file="books.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:10.924" hostname="Victors-MacBook-Pro.local" time="0.057">
+    <testcase name="crea el libro y devuelve su ubicación" status="pass" classname="books" time="0.057"/>
+  </testsuite>
+  <testsuite name="actualiza copias" file="actualiza copias.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:10.924" hostname="Victors-MacBook-Pro.local" time="0.059">
+    <testcase name="actualiza las copias y conserva los demás campos" status="pass" classname="actualiza copias" time="0.059"/>
+  </testsuite>
+  <testsuite name="lee libro modificado" file="lee libro modificado.yml" errors="0" failures="0" skipped="0" tests="1" timestamp="2026-09-30T02:46:10.924" hostname="Victors-MacBook-Pro.local" time="0.056">
+    <testcase name="devuelve el libro con el cambio guardado" status="pass" classname="lee libro modificado" time="0.056"/>
+  </testsuite>
+</testsuites>

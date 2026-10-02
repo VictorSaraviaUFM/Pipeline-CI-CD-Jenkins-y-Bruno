@@ -1,0 +1,36 @@
+info:
+  name: rechaza un año menor al mínimo
+  type: http
+  seq: 10
+
+http:
+  method: POST
+  url: "{{baseUrl}}/books"
+  body:
+    type: json
+    data: |-
+      {
+        "title": "Invalid Year",
+        "author": "Equipo QA",
+        "year": 1449,
+        "copies": 1
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("rechaza un año menor que 1450", function () {
+          expect(res.getStatus()).to.equal(422);
+          expect(res.getBody().detail).to.be.an("array");
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+docs: "Técnica: valores frontera. Valor probado: `year=1449`, uno por debajo del mínimo. Resultado esperado: 422; no se crea el libro."

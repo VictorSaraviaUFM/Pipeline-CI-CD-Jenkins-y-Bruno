@@ -1,0 +1,26 @@
+info:
+  name: HEAD libro eliminado
+  type: http
+  seq: 14
+
+http:
+  method: HEAD
+  url: "{{baseUrl}}/books/4"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: tests
+      code: |-
+        test("HEAD indica que el libro ya no existe", function () {
+          expect(res.getStatus()).to.equal(404);
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+docs: "Técnica: transición de estados. Valor probado: HEAD sobre el libro eliminado. Resultado esperado: 404. En HEAD se comprueba el código; no hace falta inspeccionar el body."
