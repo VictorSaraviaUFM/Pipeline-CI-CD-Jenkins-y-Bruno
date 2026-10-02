@@ -1,0 +1,11 @@
+.git
+.venv
+__pycache__
+*.py[cod]
+*.log
+*.pid
+bruno/
+entrega HDT4/
+evidencia/
+*.xml
+.DS_Store
